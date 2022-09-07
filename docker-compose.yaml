@@ -1,0 +1,14 @@
+version: '3'
+services:
+  database:
+    image: postgres:13.5-alpine
+    ports:
+      - '5433:5432'
+    environment:
+      POSTGRES_USER: worth_answering
+      POSTGRES_PASSWORD: worth_answering
+      POSTGRES_DATABASE: worth_answering
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d
+      - ./pgdata:/var/lib/postgresql/data/pgdata
